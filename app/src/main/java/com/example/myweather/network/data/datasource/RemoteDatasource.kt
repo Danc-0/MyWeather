@@ -9,7 +9,8 @@ import javax.inject.Inject
 class RemoteDatasource @Inject constructor(){
 
     companion object{
-        private const val BASE_URL = "https://api.themoviedb.org/3/"
+
+        private const val BASE_URL = "https://api.weatherapi.com/v1/"
     }
 
     private val loggingInterceptor: HttpLoggingInterceptor =

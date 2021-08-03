@@ -1,15 +1,17 @@
 package com.example.movieapp.data.datasource
 
 import com.example.movieapp.api.ApiService
+import com.example.myweather.BuildConfig
 import javax.inject.Inject
 
 class ApiHelper @Inject constructor(private val apiService: ApiService) {
 
-    val apiKey: String = "lkkjhgghjj"
+    val apiKey: String = BuildConfig.API_KEY
 
-    suspend fun getMovies() = apiService.getMovieList(
+    suspend fun getCurrentWeather() = apiService.getCurrentWeather(
         apiKey,
-        1
+        "Nairobissss",
+        "yess"
     )
 
     suspend fun getMoviesGenre() = apiService.getMovieGenreList(

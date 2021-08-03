@@ -1,16 +1,18 @@
 package com.example.movieapp.api
 
+import com.example.myweather.models.CurrentWeather
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("movie/popular")
-    suspend fun getMovieList(
-        @Query("api_key") api_key: String,
-        @Query("page") page: Int
-    )
+    @GET("current.json")
+    suspend fun getCurrentWeather(
+        @Query("key") api_key: String,
+        @Query("q") city: String,
+        @Query("aqi") aqi: String
+    ) : CurrentWeather
 
     @GET("genre/movie/list")
     suspend fun getMovieGenreList(

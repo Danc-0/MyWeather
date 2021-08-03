@@ -8,7 +8,7 @@ class ReadError {
         val jsonObj = JSONObject(errorBody!!.charStream().readText())
         return try {
 
-            return jsonObj.getString("status_message")
+            return jsonObj.getString("code")
 
         } catch (_: Exception) {
             "There was an error please try again"
