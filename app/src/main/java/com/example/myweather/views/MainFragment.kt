@@ -8,13 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.data.datasource.Resource
 import com.example.movieapp.utils.ReadError
 import com.example.myweather.R
+import com.example.myweather.adapters.MainAdapter
 import com.example.myweather.models.CurrentWeather
 import com.example.myweather.viewmodels.MainFragViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.scopes.FragmentScoped
+import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 
@@ -24,16 +28,21 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private val TAG = "MainFragment"
     private val viewModel by viewModels<MainFragViewModels>()
+    private lateinit var mainAdapter: MainAdapter
+    var weatherList: MutableList<CurrentWeather> = mutableListOf()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getCurrentWeather()
-
+        circleImageView2.setOnClickListener {
+            getCurrentWeather(cityNameChoice.text.toString())
+//            Log.d(TAG, "onViewCreated: ${}")
+        }
     }
 
-    fun getCurrentWeather() {
-        viewModel.getCurrentWeather()
+    fun getCurrentWeather(cityName: String) {
+        viewModel.getCurrentWeather(cityName)
 
         viewModel.currentWeather.observe(viewLifecycleOwner, {
 
@@ -42,7 +51,16 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 is Resource.Success -> {
                     lifecycleScope.launch {
                         val currentWeather: CurrentWeather = it.value
-                        Log.d(TAG, "getCurrentWeather: $currentWeather")
+                        weatherList.add(currentWeather)
+                        mainAdapter = MainAdapter(weatherList)
+
+                        rvCurrentWeather.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+                        rvCurrentWeather.adapter = mainAdapter
+                    }
+
+                    mainAdapter.apply {
+                        true
+                        notifyDataSetChanged()
                     }
                 }
                 

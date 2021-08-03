@@ -8,10 +8,10 @@ class ApiHelper @Inject constructor(private val apiService: ApiService) {
 
     val apiKey: String = BuildConfig.API_KEY
 
-    suspend fun getCurrentWeather() = apiService.getCurrentWeather(
+    suspend fun getCurrentWeather(city: String) = apiService.getCurrentWeather(
         apiKey,
-        "Nairobissss",
-        "yess"
+        city,
+        "yes"
     )
 
     suspend fun getMoviesGenre() = apiService.getMovieGenreList(

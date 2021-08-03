@@ -8,6 +8,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="200dp"
         android:layout_height="250dp"
+        android:layout_marginStart="10dp"
         android:elevation="20dp"
         app:cardCornerRadius="25dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +25,7 @@
                 android:background="@drawable/dc" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/cityName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -37,7 +38,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/cityTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
@@ -45,12 +46,12 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/textView4"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintEnd_toEndOf="@+id/cityName"
+                app:layout_constraintStart_toStartOf="@+id/cityName"
+                app:layout_constraintTop_toBottomOf="@+id/cityName" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
@@ -64,25 +65,26 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/circleImageView"
+                android:id="@+id/weatherImage"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView6"
-                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:layout_constraintStart_toStartOf="@+id/cityTime"
+                app:layout_constraintTop_toBottomOf="@+id/temperature"
                 app:layout_constraintVertical_bias=".85" />
 
             <TextView
+                android:id="@+id/weatherDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="Cloudy"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
-                app:layout_constraintStart_toEndOf="@+id/circleImageView"
-                app:layout_constraintTop_toTopOf="@+id/circleImageView" />
+                app:layout_constraintBottom_toBottomOf="@+id/weatherImage"
+                app:layout_constraintStart_toEndOf="@+id/weatherImage"
+                app:layout_constraintTop_toTopOf="@+id/weatherImage" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

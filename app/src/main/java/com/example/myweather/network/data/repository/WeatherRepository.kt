@@ -5,9 +5,9 @@ import javax.inject.Inject
 
 class WeatherRepository @Inject constructor(private val apiHelper: ApiHelper): BaseRepository() {
 
-    suspend fun getCurrentWeather() =
+    suspend fun getCurrentWeather(city: String) =
         safeApiCall {
-            apiHelper.getCurrentWeather()
+            apiHelper.getCurrentWeather(city)
         }
 
 }

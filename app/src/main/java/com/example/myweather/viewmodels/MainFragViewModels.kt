@@ -19,11 +19,11 @@ class MainFragViewModels @Inject constructor(private val repository: WeatherRepo
     val currentWeather: LiveData<Resource<CurrentWeather>>
         get() = _myCurrentWeather
 
-    fun getCurrentWeather() {
+    fun getCurrentWeather(city: String) {
         viewModelScope.launch {
             _myCurrentWeather.value = Resource.Loading
 
-            _myCurrentWeather.value = repository.getCurrentWeather()
+            _myCurrentWeather.value = repository.getCurrentWeather(city)
         }
     }
 
