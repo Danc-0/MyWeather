@@ -8,3 +8,9 @@ Its to give users an ability to make decision on what to do and what to expect. 
  ###  LinkedIn 🔗 - https://www.linkedin.com/in/daniel-opiyo-156042169/
  ###  Twitter: 🔗 - https://twitter.com/danc_O
  ###  Email: - 🔗 - lunjaludaniel@gmail.com
+
+# Contributions
+Feel free to contibute and make it better 🐝
+
+# Appreciations
+If you like the project give a 🌟
