@@ -75,17 +75,21 @@
         app:layout_constraintTop_toBottomOf="@+id/editText"
         app:layout_constraintVertical_bias=".20" />
 
-    <androidx.viewpager2.widget.ViewPager2
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/viewPager2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent=".35"
+        tools:listitem="@layout/location_item"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView2"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:src="@color/white"
