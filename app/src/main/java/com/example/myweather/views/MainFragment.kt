@@ -28,6 +28,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private val TAG = "MainFragment"
     private val viewModel by viewModels<MainFragViewModels>()
+    var currentWeather: CurrentWeather? = null
     private lateinit var mainAdapter: MainAdapter
     var weatherList: MutableList<CurrentWeather> = mutableListOf()
 
@@ -35,9 +36,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        circleImageView2.setOnClickListener {
+        imgSearch.setOnClickListener {
             getCurrentWeather(cityNameChoice.text.toString())
-//            Log.d(TAG, "onViewCreated: ${}")
+
         }
     }
 
@@ -50,8 +51,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
                 is Resource.Success -> {
                     lifecycleScope.launch {
-                        val currentWeather: CurrentWeather = it.value
-                        weatherList.add(currentWeather)
+                       currentWeather = it.value
+                        weatherList.add(currentWeather!!)
                         mainAdapter = MainAdapter(weatherList)
 
                         rvCurrentWeather.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
